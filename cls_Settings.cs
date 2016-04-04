@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 
 namespace hyperdesktop2
 {
 	public static class Settings
 	{
-		public static Int32 build = 7;
-		public static String build_url = "https://raw.githubusercontent.com/TheTarkus/Hyperdesktop2/master/BUILD";
-		public static String release_url = "https://github.com/TheTarkus/Hyperdesktop2/releases";
+		public static Int32 build = 8;
+		public static String build_url = "https://raw.githubusercontent.com/andresaaf/Hyperdesktop2/master/BUILD";
+		public static String release_url = "https://github.com/andresaaf/Hyperdesktop2/releases";
 		
 		public static String app_data = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Hyperdesktop2\";
 		public static String exe_path = app_data + @"hyperdesktop2.exe";
@@ -60,8 +62,12 @@ namespace hyperdesktop2
 		
 		public static Boolean auto_detect_screen_res;
 		public static String screen_res;
-		
-		public static void get_settings()
+        
+        public static Tuple<ModifierKeys, Keys> hotkey_screenshot;
+        public static Tuple<ModifierKeys, Keys> hotkey_region;
+        public static Tuple<ModifierKeys, Keys> hotkey_window;
+
+        public static void get_settings()
 		{
 			Global_Func.app_data_folder_create();
 			settings_build			= Exists("hyperdesktop2", "build", Convert.ToString(build));
@@ -84,7 +90,14 @@ namespace hyperdesktop2
 			edit_screenshot 		= Global_Func.str_to_bool(Exists("behavior", "edit_screenshot", "true"));
 			
 			screen_res 				= Exists("screen", "screen_res", Screen_Bounds.reset());
-		}
+
+            hotkey_screenshot       = new Tuple<ModifierKeys, Keys>((ModifierKeys)Enum.Parse(typeof(ModifierKeys), Exists("hotkeys", "screenshot_mod", "6")),
+                                        (Keys)Enum.Parse(typeof(Keys), Exists("hotkeys", "screenshot_key", "51")));
+            hotkey_region           = new Tuple<ModifierKeys, Keys>((ModifierKeys)Enum.Parse(typeof(ModifierKeys), Exists("hotkeys", "region_mod", "6")),
+                                        (Keys)Enum.Parse(typeof(Keys), Exists("hotkeys", "region_key", "52")));
+            hotkey_window           = new Tuple<ModifierKeys, Keys>((ModifierKeys)Enum.Parse(typeof(ModifierKeys), Exists("hotkeys", "window_mod", "6")),
+                                        (Keys)Enum.Parse(typeof(Keys), Exists("hotkeys", "window_key", "53")));
+        }
 		
 		public static void write_settings()
 		{
@@ -103,7 +116,14 @@ namespace hyperdesktop2
 			Write("behavior", 	"edit_screenshot", 			edit_screenshot.ToString());
 			
 			Write("screen", 	"screen_res",			 	screen_res);
-		}
+
+            Write("hotkeys", "screenshot_mod",              hotkey_screenshot.Item1.ToString());
+            Write("hotkeys", "screenshot_key",              hotkey_screenshot.Item2.ToString());
+            Write("hotkeys", "region_mod",                  hotkey_region.Item1.ToString());
+            Write("hotkeys", "region_key",                  hotkey_region.Item2.ToString());
+            Write("hotkeys", "window_mod",                  hotkey_window.Item1.ToString());
+            Write("hotkeys", "window_key",                  hotkey_window.Item2.ToString());
+        }
 		
 	}
 }
