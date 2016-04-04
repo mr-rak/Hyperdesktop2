@@ -60,21 +60,12 @@ namespace hyperdesktop2
             this.drop_upload_format = new System.Windows.Forms.ComboBox();
             this.label_update_format = new System.Windows.Forms.Label();
             this.tab_hotkeys = new System.Windows.Forms.TabPage();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_hotkey_window = new System.Windows.Forms.TextBox();
             this.label_window_screenshot = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_hotkey_region = new System.Windows.Forms.TextBox();
             this.label_region_screenshot = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_hotkey_screenshot = new System.Windows.Forms.TextBox();
             this.label_screenshot = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.check_screenshot_ctrl = new System.Windows.Forms.CheckBox();
             this.label_hotkeys_instructions = new System.Windows.Forms.Label();
             this.tab_screens = new System.Windows.Forms.TabPage();
             this.btn_reset_screen = new System.Windows.Forms.Button();
@@ -367,21 +358,12 @@ namespace hyperdesktop2
             // 
             // tab_hotkeys
             // 
-            this.tab_hotkeys.Controls.Add(this.textBox3);
+            this.tab_hotkeys.Controls.Add(this.txt_hotkey_window);
             this.tab_hotkeys.Controls.Add(this.label_window_screenshot);
-            this.tab_hotkeys.Controls.Add(this.checkBox6);
-            this.tab_hotkeys.Controls.Add(this.checkBox7);
-            this.tab_hotkeys.Controls.Add(this.checkBox8);
-            this.tab_hotkeys.Controls.Add(this.textBox2);
+            this.tab_hotkeys.Controls.Add(this.txt_hotkey_region);
             this.tab_hotkeys.Controls.Add(this.label_region_screenshot);
-            this.tab_hotkeys.Controls.Add(this.checkBox3);
-            this.tab_hotkeys.Controls.Add(this.checkBox4);
-            this.tab_hotkeys.Controls.Add(this.checkBox5);
-            this.tab_hotkeys.Controls.Add(this.textBox1);
+            this.tab_hotkeys.Controls.Add(this.txt_hotkey_screenshot);
             this.tab_hotkeys.Controls.Add(this.label_screenshot);
-            this.tab_hotkeys.Controls.Add(this.checkBox2);
-            this.tab_hotkeys.Controls.Add(this.checkBox1);
-            this.tab_hotkeys.Controls.Add(this.check_screenshot_ctrl);
             this.tab_hotkeys.Controls.Add(this.label_hotkeys_instructions);
             this.tab_hotkeys.Location = new System.Drawing.Point(4, 22);
             this.tab_hotkeys.Name = "tab_hotkeys";
@@ -391,182 +373,62 @@ namespace hyperdesktop2
             this.tab_hotkeys.Text = "Hotkeys";
             this.tab_hotkeys.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // txt_hotkey_window
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(300, 95);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(30, 20);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.Text = "5";
+            this.txt_hotkey_window.Location = new System.Drawing.Point(187, 92);
+            this.txt_hotkey_window.Name = "txt_hotkey_window";
+            this.txt_hotkey_window.ReadOnly = true;
+            this.txt_hotkey_window.Size = new System.Drawing.Size(108, 20);
+            this.txt_hotkey_window.TabIndex = 15;
+            this.txt_hotkey_window.Text = "Ctrl + Shift + 5";
+            this.txt_hotkey_window.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Hotkey_KeyDown);
             // 
             // label_window_screenshot
             // 
-            this.label_window_screenshot.Location = new System.Drawing.Point(8, 93);
+            this.label_window_screenshot.Location = new System.Drawing.Point(41, 90);
             this.label_window_screenshot.Name = "label_window_screenshot";
             this.label_window_screenshot.Size = new System.Drawing.Size(140, 23);
             this.label_window_screenshot.TabIndex = 14;
             this.label_window_screenshot.Text = "3. Take window screenshot";
             this.label_window_screenshot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // checkBox6
+            // txt_hotkey_region
             // 
-            this.checkBox6.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox6.Checked = true;
-            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.Enabled = false;
-            this.checkBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox6.Location = new System.Drawing.Point(247, 93);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(47, 24);
-            this.checkBox6.TabIndex = 13;
-            this.checkBox6.Text = "Shift";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox7.Enabled = false;
-            this.checkBox7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox7.Location = new System.Drawing.Point(202, 93);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(39, 24);
-            this.checkBox7.TabIndex = 12;
-            this.checkBox7.Text = "Alt";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox8.Checked = true;
-            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Enabled = false;
-            this.checkBox8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox8.Location = new System.Drawing.Point(154, 93);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(42, 24);
-            this.checkBox8.TabIndex = 11;
-            this.checkBox8.Text = "Ctrl";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(300, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(30, 20);
-            this.textBox2.TabIndex = 10;
-            this.textBox2.Text = "4";
+            this.txt_hotkey_region.Location = new System.Drawing.Point(187, 62);
+            this.txt_hotkey_region.Name = "txt_hotkey_region";
+            this.txt_hotkey_region.ReadOnly = true;
+            this.txt_hotkey_region.Size = new System.Drawing.Size(108, 20);
+            this.txt_hotkey_region.TabIndex = 10;
+            this.txt_hotkey_region.Text = "Ctrl + Shift + 4";
+            this.txt_hotkey_region.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Hotkey_KeyDown);
             // 
             // label_region_screenshot
             // 
-            this.label_region_screenshot.Location = new System.Drawing.Point(8, 63);
+            this.label_region_screenshot.Location = new System.Drawing.Point(41, 60);
             this.label_region_screenshot.Name = "label_region_screenshot";
             this.label_region_screenshot.Size = new System.Drawing.Size(140, 23);
             this.label_region_screenshot.TabIndex = 9;
             this.label_region_screenshot.Text = "2. Take region screenshot:";
             this.label_region_screenshot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // checkBox3
+            // txt_hotkey_screenshot
             // 
-            this.checkBox3.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Enabled = false;
-            this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox3.Location = new System.Drawing.Point(247, 63);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(47, 24);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.Text = "Shift";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox4.Enabled = false;
-            this.checkBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox4.Location = new System.Drawing.Point(202, 63);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(39, 24);
-            this.checkBox4.TabIndex = 7;
-            this.checkBox4.Text = "Alt";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox5.Checked = true;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Enabled = false;
-            this.checkBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox5.Location = new System.Drawing.Point(154, 63);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(42, 24);
-            this.checkBox5.TabIndex = 6;
-            this.checkBox5.Text = "Ctrl";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(300, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(30, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "3";
+            this.txt_hotkey_screenshot.Location = new System.Drawing.Point(187, 32);
+            this.txt_hotkey_screenshot.Name = "txt_hotkey_screenshot";
+            this.txt_hotkey_screenshot.ReadOnly = true;
+            this.txt_hotkey_screenshot.Size = new System.Drawing.Size(108, 20);
+            this.txt_hotkey_screenshot.TabIndex = 5;
+            this.txt_hotkey_screenshot.Text = "Ctrl+ Shift + 3";
+            this.txt_hotkey_screenshot.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Hotkey_KeyDown);
             // 
             // label_screenshot
             // 
-            this.label_screenshot.Location = new System.Drawing.Point(8, 33);
+            this.label_screenshot.Location = new System.Drawing.Point(41, 30);
             this.label_screenshot.Name = "label_screenshot";
             this.label_screenshot.Size = new System.Drawing.Size(140, 23);
             this.label_screenshot.TabIndex = 4;
             this.label_screenshot.Text = "1. Take screenshot:";
             this.label_screenshot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Enabled = false;
-            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox2.Location = new System.Drawing.Point(247, 33);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(47, 24);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Shift";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox1.Location = new System.Drawing.Point(202, 33);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(39, 24);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Alt";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // check_screenshot_ctrl
-            // 
-            this.check_screenshot_ctrl.Appearance = System.Windows.Forms.Appearance.Button;
-            this.check_screenshot_ctrl.Checked = true;
-            this.check_screenshot_ctrl.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_screenshot_ctrl.Enabled = false;
-            this.check_screenshot_ctrl.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.check_screenshot_ctrl.Location = new System.Drawing.Point(154, 33);
-            this.check_screenshot_ctrl.Name = "check_screenshot_ctrl";
-            this.check_screenshot_ctrl.Size = new System.Drawing.Size(42, 24);
-            this.check_screenshot_ctrl.TabIndex = 1;
-            this.check_screenshot_ctrl.Text = "Ctrl";
-            this.check_screenshot_ctrl.UseVisualStyleBackColor = true;
             // 
             // label_hotkeys_instructions
             // 
@@ -734,6 +596,7 @@ namespace hyperdesktop2
             // btn_save
             // 
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_save.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_save.Location = new System.Drawing.Point(191, 213);
             this.btn_save.Name = "btn_save";
@@ -802,21 +665,12 @@ namespace hyperdesktop2
 		private System.Windows.Forms.CheckBox check_show_cursor;
 		private System.Windows.Forms.Button btn_save;
 		private System.Windows.Forms.Button btn_cancel;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox txt_hotkey_window;
 		private System.Windows.Forms.Label label_window_screenshot;
-		private System.Windows.Forms.CheckBox checkBox6;
-		private System.Windows.Forms.CheckBox checkBox7;
-		private System.Windows.Forms.CheckBox checkBox8;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox txt_hotkey_region;
 		private System.Windows.Forms.Label label_region_screenshot;
-		private System.Windows.Forms.CheckBox checkBox3;
-		private System.Windows.Forms.CheckBox checkBox4;
-		private System.Windows.Forms.CheckBox checkBox5;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txt_hotkey_screenshot;
 		private System.Windows.Forms.Label label_screenshot;
-		private System.Windows.Forms.CheckBox checkBox2;
-		private System.Windows.Forms.CheckBox checkBox1;
-		private System.Windows.Forms.CheckBox check_screenshot_ctrl;
 		private System.Windows.Forms.Label label_hotkeys_instructions;
 		private System.Windows.Forms.CheckBox check_edit_screenshot;
 		private System.Windows.Forms.CheckBox check_launch_browser;

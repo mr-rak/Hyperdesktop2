@@ -20,9 +20,11 @@ namespace hyperdesktop2
 		public frm_Main()
 		{
 			InitializeComponent();
-			
-			// Delete older executable on update
-			try {
+            
+            Settings.get_settings();
+
+            // Delete older executable on update
+            try {
 				if(Convert.ToInt32(Settings.Read("hyperdesktop2", "build")) < Settings.build) {
 					File.Delete(Settings.exe_path);
 					Settings.Write("hyperdesktop2", "build", Settings.build.ToString());
@@ -76,7 +78,6 @@ namespace hyperdesktop2
             Imgur.web_client.UploadProgressChanged += upload_progress_changed;
             Imgur.web_client.UploadValuesCompleted += upload_progress_complete;
 
-			Settings.get_settings();
 			tray_icon.Visible = true;
 
             Screen_Bounds.load();
@@ -131,9 +132,9 @@ namespace hyperdesktop2
 			hook.KeyPressed += hook_KeyPressed;
 			
 			try {
-				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.D3);
-				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.D4);
-				hook.RegisterHotKey(global::ModifierKeys.Control | global::ModifierKeys.Shift, Keys.D5);
+                hook.RegisterHotKey(Settings.hotkey_screenshot.Item1, Settings.hotkey_screenshot.Item2);
+                hook.RegisterHotKey(Settings.hotkey_region.Item1, Settings.hotkey_region.Item2);
+                hook.RegisterHotKey(Settings.hotkey_window.Item1, Settings.hotkey_window.Item2);
 			} catch {
 				MessageBox.Show("Couldn't register hotkeys. Perhaps they are already in use or try running as an Administrator.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
@@ -141,19 +142,12 @@ namespace hyperdesktop2
 		
 		void hook_KeyPressed(object sender, KeyPressedEventArgs e)
 	    {
-			switch(e.Key) {
-				case Keys.D3:
-					screen_capture("screen");
-					break;
-					
-				case Keys.D4:
-					screen_capture("region");
-					break;
-					
-				case Keys.D5:
-					screen_capture("window");
-					break;
-			}
+            if (e.Key == Settings.hotkey_screenshot.Item2)
+                screen_capture("screen");
+            else if (e.Key == Settings.hotkey_region.Item2)
+                screen_capture("region");
+            else if (e.Key == Settings.hotkey_window.Item2)
+                screen_capture("window");
 	    }
 		#endregion
 
@@ -211,11 +205,12 @@ namespace hyperdesktop2
                         return;
 
                     snipper_open = true;
-                    var rect = frm_Snipper.get_region();
+                    var r = frm_Snipper.get_region();
 
-                    if(rect == new Rectangle(0, 0, 0, 0))
+                    if(r.Width == 0 || r.Height == 0)
                         return;
 
+                    Screen_Capture.RECT rect = new Screen_Capture.RECT(r.Left, r.Top, r.Right, r.Bottom);
                     bmp = Screen_Capture.region(rect);
                     snipper_open = false;
                     break;
@@ -265,8 +260,10 @@ namespace hyperdesktop2
 		#region Main Menu
 		void PreferencesToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			new frm_Preferences().ShowDialog();
-		}
+            hook.UnregisterHotkeys();
+			DialogResult result = new frm_Preferences().ShowDialog();
+            register_hotkeys();
+        }
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			this.Dispose();

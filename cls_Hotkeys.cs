@@ -82,28 +82,37 @@ public sealed class Hotkeys : IDisposable
     /// <param name="key">The key itself that is associated with the hot key.</param>
     public void RegisterHotKey(ModifierKeys modifier, Keys key)
     {
+        if (key == Keys.None)
+            return;
         // increment the counter.
-        _currentId = _currentId + 1;
+        ++_currentId;
 
         // register the hot key.
         if (!RegisterHotKey(_window.Handle, _currentId, (uint)modifier, (uint)key))
+        {
             throw new InvalidOperationException("Couldn’t register the hot key.");
+        }
     }
-
+    
     /// <summary>
     /// A hot key has been pressed.
     /// </summary>
     public event EventHandler<KeyPressedEventArgs> KeyPressed;
+
+    public void UnregisterHotkeys()
+    {
+        for (; _currentId > 0; --_currentId)
+        {
+            UnregisterHotKey(_window.Handle, _currentId);
+        }
+    }
 
     #region IDisposable Members
 
     public void Dispose()
     {
         // unregister all the registered hot keys.
-        for (int i = _currentId; i > 0; i--)
-        {
-            UnregisterHotKey(_window.Handle, i);
-        }
+        UnregisterHotkeys();
 
         // dispose the inner native window.
         _window.Dispose();
