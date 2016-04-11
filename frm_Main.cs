@@ -156,9 +156,10 @@ namespace hyperdesktop2
         Bitmap edit_screenshot(Bitmap bmp)
         {
             if (!Settings.edit_screenshot)
-                return null;
+                return bmp;
 
             var edit = new frm_Edit(bmp);
+            edit.StartPosition = FormStartPosition.CenterScreen;
             edit.ShowDialog();
 
             return edit.Result;
