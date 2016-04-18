@@ -208,8 +208,11 @@ namespace hyperdesktop2
                     snipper_open = true;
                     var r = frm_Snipper.get_region();
 
-                    if(r.Width == 0 || r.Height == 0)
+                    if (r.Width == 0 || r.Height == 0)
+                    {
+                        snipper_open = false;
                         return;
+                    }
 
                     Screen_Capture.RECT rect = new Screen_Capture.RECT(r.Left, r.Top, r.Right, r.Bottom);
                     bmp = Screen_Capture.region(rect);
@@ -275,7 +278,8 @@ namespace hyperdesktop2
 		}
 		void RegisterHotkeysToolStripMenuItemClick(object sender, System.EventArgs e)
 		{
-			register_hotkeys();
+            hook.UnregisterHotkeys();
+            register_hotkeys();
 		}
 		#endregion
 		
