@@ -20,7 +20,7 @@ namespace hyperdesktop2
                 var image = Global_Func.bmp_to_base64(bmp, Global_Func.ext_to_imageformat(Settings.upload_format));
                 data.Add("image", image);
 
-                web_client.Headers.Add("Authorization", "Client-ID " + Settings.imgur_client_id);
+                web_client.Headers.Add("Authorization", "Client-ID " + Settings.api_key);
                 web_client.UploadValuesAsync(
                     new Uri("https://api.imgur.com/3/image/"),
                     "POST",
@@ -43,7 +43,7 @@ namespace hyperdesktop2
             {
                 var web_client = new WebClient();
 
-                web_client.Headers.Add("Authorization", "Client-ID " + Settings.imgur_client_id);
+                web_client.Headers.Add("Authorization", "Client-ID " + Settings.api_key);
                 web_client.UploadData(
                     new Uri("https://api.imgur.com/3/image/" + delete_hash),
                     "DELETE",

@@ -77,8 +77,10 @@ namespace hyperdesktop2
 		{
             Imgur.web_client.UploadProgressChanged += upload_progress_changed;
             Imgur.web_client.UploadValuesCompleted += upload_progress_complete;
+            IKhan.web_client.UploadProgressChanged += upload_progress_changed;
+            IKhan.web_client.UploadValuesCompleted += upload_progress_complete;
 
-			tray_icon.Visible = true;
+            tray_icon.Visible = true;
 
             Screen_Bounds.load();
 		}
@@ -232,15 +234,19 @@ namespace hyperdesktop2
             if (bmp == null)
                 return;
 
+            bool success = false;
             if (Settings.upload_method == "imgur")
-                if (!Imgur.upload(bmp))
-                {
-                    Global_Func.play_sound("error.wav");
+                success = Imgur.upload(bmp);
+            else if (Settings.upload_method == "ikhan.it")
+                success = IKhan.upload(bmp);
 
-                    if (Settings.balloon_messages)
-                        balloon_tip("Error uploading file!", "Error", 2000, ToolTipIcon.Error);
-                }
+            if (!success)
+            {
+                Global_Func.play_sound("error.wav");
 
+                if (Settings.balloon_messages)
+                    balloon_tip("Error uploading file!", "Error", 2000, ToolTipIcon.Error);
+            }
             save_screenshot(bmp);
         }
         #endregion

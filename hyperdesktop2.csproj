@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="cls_Global_Func.cs" />
     <Compile Include="cls_Hotkeys.cs" />
+    <Compile Include="cls_IKhan.cs" />
     <Compile Include="cls_Imgur.cs" />
     <Compile Include="cls_Screen_Bounds.cs" />
     <Compile Include="cls_Screen_Capture.cs" />

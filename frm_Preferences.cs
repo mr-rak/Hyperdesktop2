@@ -20,6 +20,8 @@ namespace hyperdesktop2
 			
 			drop_upload_method.Text 			= Settings.upload_method;
 			drop_upload_format.Text 			= Settings.upload_format;
+
+            txt_api_key.Text                    = Settings.api_key;
 			
 			check_run_at_startup.Checked 		= Global_Func.reg_key.GetValue("Hyperdesktop2") != null;
 			check_copy_links.Checked 			= Settings.copy_links_to_clipboard;
@@ -93,6 +95,7 @@ namespace hyperdesktop2
 			
 			Settings.upload_method 				= drop_upload_method.Text;
 			Settings.upload_format 				= drop_upload_format.Text;
+            Settings.api_key                    = txt_api_key.Text;
 			
 			Settings.copy_links_to_clipboard 	= check_copy_links.Checked;
 			Settings.sound_effects 				= check_sound_effects.Checked;

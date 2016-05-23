@@ -79,6 +79,8 @@ namespace hyperdesktop2
             this.label_screen_x = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_api_key = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tab_general.SuspendLayout();
             this.tab_behavior.SuspendLayout();
@@ -299,6 +301,8 @@ namespace hyperdesktop2
             // 
             // tab_uploading
             // 
+            this.tab_uploading.Controls.Add(this.txt_api_key);
+            this.tab_uploading.Controls.Add(this.label1);
             this.tab_uploading.Controls.Add(this.drop_upload_method);
             this.tab_uploading.Controls.Add(this.label_upload_method);
             this.tab_uploading.Controls.Add(this.drop_upload_format);
@@ -318,7 +322,8 @@ namespace hyperdesktop2
             this.drop_upload_method.FormattingEnabled = true;
             this.drop_upload_method.Items.AddRange(new object[] {
             "do not upload",
-            "imgur"});
+            "imgur",
+            "ikhan.it"});
             this.drop_upload_method.Location = new System.Drawing.Point(64, 6);
             this.drop_upload_method.Name = "drop_upload_method";
             this.drop_upload_method.Size = new System.Drawing.Size(121, 21);
@@ -618,6 +623,22 @@ namespace hyperdesktop2
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.Btn_cancelClick);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(8, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 23);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "API Key:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txt_api_key
+            // 
+            this.txt_api_key.Location = new System.Drawing.Point(64, 66);
+            this.txt_api_key.Name = "txt_api_key";
+            this.txt_api_key.Size = new System.Drawing.Size(121, 20);
+            this.txt_api_key.TabIndex = 11;
+            // 
             // frm_Preferences
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -638,6 +659,7 @@ namespace hyperdesktop2
             this.tab_general.PerformLayout();
             this.tab_behavior.ResumeLayout(false);
             this.tab_uploading.ResumeLayout(false);
+            this.tab_uploading.PerformLayout();
             this.tab_hotkeys.ResumeLayout(false);
             this.tab_hotkeys.PerformLayout();
             this.tab_screens.ResumeLayout(false);
@@ -690,5 +712,7 @@ namespace hyperdesktop2
 		private System.Windows.Forms.TabPage tab_general;
 		private System.Windows.Forms.TabPage tab_behavior;
 		private System.Windows.Forms.TabPage tab_uploading;
-	}
+        private System.Windows.Forms.TextBox txt_api_key;
+        private System.Windows.Forms.Label label1;
+    }
 }

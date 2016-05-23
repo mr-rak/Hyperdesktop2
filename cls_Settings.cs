@@ -42,9 +42,9 @@ namespace hyperdesktop2
 		
 		public static String settings_build;
 		
-		public static String imgur_client_id;
-		
-		public static Boolean save_screenshots;
+        public static String api_key;
+
+        public static Boolean save_screenshots;
 		public static String save_folder;
 		public static String save_format;
 		public static Int16 save_quality;
@@ -72,9 +72,9 @@ namespace hyperdesktop2
 			Global_Func.app_data_folder_create();
 			settings_build			= Exists("hyperdesktop2", "build", Convert.ToString(build));
 			
-			imgur_client_id			= Exists("upload", "imgur_client_id", "84c55d06b4c9686");
-				
-			save_screenshots		= Global_Func.str_to_bool(Exists("general", "save_screenshots", "false"));
+			api_key			        = Exists("upload", "api_key", "84c55d06b4c9686");
+
+            save_screenshots		= Global_Func.str_to_bool(Exists("general", "save_screenshots", "false"));
 			save_folder				= Exists("general", "save_folder", Environment.CurrentDirectory + "\\captures\\");
 			save_format 			= Exists("general", "save_format", "png");
 			save_quality 			= Convert.ToInt16(Exists("general", "save_quality", "100"));
@@ -101,14 +101,17 @@ namespace hyperdesktop2
 		
 		public static void write_settings()
 		{
-			Write("upload", 	"imgur_client_id", 			imgur_client_id);
+			Write("upload", 	"api_key", 			        api_key);
 			
 			Write("general", 	"save_screenshots", 		save_screenshots.ToString());
 			Write("general", 	"save_folder", 				save_folder);
 			Write("general", 	"save_format", 				save_format);
 			Write("general", 	"save_quality", 			save_quality.ToString());
-			
-			Write("behavior", 	"copy_links_to_clipboard", 	copy_links_to_clipboard.ToString());
+
+            Write("upload",     "upload_method",            upload_method);
+            Write("upload",     "upload_format",            upload_format);
+
+            Write("behavior", 	"copy_links_to_clipboard", 	copy_links_to_clipboard.ToString());
 			Write("behavior", 	"show_cursor", 				show_cursor.ToString());
 			Write("behavior", 	"sound_effects", 			sound_effects.ToString());
 			Write("behavior", 	"balloon_messages", 		balloon_messages.ToString());
@@ -117,12 +120,12 @@ namespace hyperdesktop2
 			
 			Write("screen", 	"screen_res",			 	screen_res);
 
-            Write("hotkeys", "screenshot_mod",              hotkey_screenshot.Item1.ToString());
-            Write("hotkeys", "screenshot_key",              hotkey_screenshot.Item2.ToString());
-            Write("hotkeys", "region_mod",                  hotkey_region.Item1.ToString());
-            Write("hotkeys", "region_key",                  hotkey_region.Item2.ToString());
-            Write("hotkeys", "window_mod",                  hotkey_window.Item1.ToString());
-            Write("hotkeys", "window_key",                  hotkey_window.Item2.ToString());
+            Write("hotkeys",    "screenshot_mod",           hotkey_screenshot.Item1.ToString());
+            Write("hotkeys",    "screenshot_key",           hotkey_screenshot.Item2.ToString());
+            Write("hotkeys",    "region_mod",               hotkey_region.Item1.ToString());
+            Write("hotkeys",    "region_key",               hotkey_region.Item2.ToString());
+            Write("hotkeys",    "window_mod",               hotkey_window.Item1.ToString());
+            Write("hotkeys",    "window_key",               hotkey_window.Item2.ToString());
         }
 		
 	}
