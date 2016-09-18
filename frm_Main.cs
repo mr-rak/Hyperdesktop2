@@ -337,7 +337,8 @@ namespace hyperdesktop2
 			String response = Encoding.UTF8.GetString(e.Result);
 			
 			String delete_hash = Global_Func.get_text_inbetween(response, "deletehash\":\"", "\",\"name\"").Replace("\\", "");
-			String link 		= Global_Func.get_text_inbetween(response, "link\":\"", "\"}").Replace("\\", "");
+			String link 		= Global_Func.get_text_inbetween(response, "id\":\"", "\",\"title").Replace("\\", "");
+			link = "http://i.imgur.com/" + link + "." + Settings.upload_format;
 			
 			list_image_links.Items.Add(
 				new ListViewItem(new String[] {link, delete_hash})
