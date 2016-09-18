@@ -1,6 +1,5 @@
 Hyperdesktop2
 =============
 
-No longer supported.
+18.09.2016 - Fix support Imgur.
 
-Try ShareX -> https://getsharex.com/
